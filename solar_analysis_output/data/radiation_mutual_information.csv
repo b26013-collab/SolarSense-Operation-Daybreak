@@ -1,0 +1,17 @@
+subset,feature,n,mutual_information
+all_records,ClearnessIdx,15239,1.214577298530859
+all_records,SolarFrac,32686,1.1435417645937935
+all_records,Hour,32686,0.9317404037912871
+all_records,Temperature,32686,0.48280740158185864
+all_records,WindDirection(Degrees),32686,0.29146506672914185
+all_records,Humidity,32686,0.1478685482813482
+all_records,Pressure,32686,0.08762117342509956
+all_records,Speed,32686,0.01850552209818801
+daytime_only,ClearnessIdx,15239,1.214577298530859
+daytime_only,SolarFrac,15608,0.8994585996202034
+daytime_only,Hour,15608,0.5821178053930112
+daytime_only,Temperature,15608,0.3288019666581641
+daytime_only,Humidity,15608,0.19601198501441708
+daytime_only,WindDirection(Degrees),15608,0.11660241201656074
+daytime_only,Pressure,15608,0.09872919755950438
+daytime_only,Speed,15608,0.01114065666905173

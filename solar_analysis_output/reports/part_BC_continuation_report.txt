@@ -1,0 +1,27 @@
+SOLARSENSE PS2 — EVIDENCE-BASED CONTINUATION REPORT
+
+
+
+PART B: DRAWING INFERENCES
+
+
+
+1. Time of highest radiation: the highest mean hourly reading occurs at 12:00, with a mean of 727.474. This is calculated by grouping Radiation by Hour and taking the hour with the largest mean. Refer to graphs/A2_mean_radiation_by_hour.png. This identifies the peak in the dataset, not a universal solar-noon rule.
+
+2. Strongest measured relationship among all records: Temperature has the largest absolute Pearson correlation with radiation (r=0.735) and Spearman correlation rho=0.718, based on n=32686 paired rows. The full ranking is in data/continuation_correlation_rankings.csv. Comparing all records with positive-radiation records shows whether nighttime zeros influence the result. Correlation indicates association, not causation.
+
+2. Strongest measured relationship among positive-radiation records: Temperature has the largest absolute Pearson correlation with radiation (r=0.735) and Spearman correlation rho=0.718, based on n=32686 paired rows. The full ranking is in data/continuation_correlation_rankings.csv. Comparing all records with positive-radiation records shows whether nighttime zeros influence the result. Correlation indicates association, not causation.
+
+3. Radiation, temperature and humidity: radiation-temperature Pearson r=0.735, radiation-humidity r=-0.226, and temperature-humidity r=-0.285. Use graphs/A5 and A6 (and the hourly summaries) to assess whether temperature tends to rise with radiation and humidity tends to fall during brighter hours. Compare the hourly peak times in reports/part_B_inferences.txt to quantify any temperature lag. Temperature can itself respond to solar heating, so these associations do not establish causation.
+
+4. Outliers: the IQR rule flags 1965 of 32686 non-missing radiation readings; the lower and upper fences are -528.277 and 883.742. Inspect data/radiation_iqr_outliers.csv for timestamps and accompanying environmental values. The most frequently flagged dates are 2016-09-02 (55), 2016-09-25 (55), 2016-09-19 (55), 2016-09-20 (53), 2016-09-22 (51). Possible explanations include cloud transitions, cloud-edge brightening, low solar angle, or sensor issues; the IQR rule alone cannot determine the cause.
+
+
+
+BONUS INSIGHT AND LIMITATIONS
+
+Hourly peak comparison: radiation peaks at 12:00 and temperature peaks at 12:00, a difference of +0 hours. A later temperature peak is consistent with thermal lag, although hourly aggregation and seasonal coverage may affect the estimate. Verify the pattern in graphs/A2_mean_radiation_by_hour.png and the temperature plots.
+
+Recorded day length ranges from 10.93 to 12.52 hours across 118 dates. Whether this is a seasonal trend depends on the dataset's date range; see data/daily_solar_report.csv.
+
+Limitations: correlations are not causal evidence; temperature may be a response to solar radiation. Cloud cover is not directly measured in the listed features, and unusual readings need contextual inspection before being labelled sensor errors.

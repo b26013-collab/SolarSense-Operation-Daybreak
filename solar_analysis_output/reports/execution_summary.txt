@@ -1,0 +1,25 @@
+SOLARSENSE — PS2 EXECUTION SUMMARY
+
+Input file: /Users/aashi/SolarSense/SolarPrediction.csv
+Original rows: 32686
+Rows after invalid timestamp removal: 32686
+Original columns: 11
+Date range: 2016-09-01 00:00:08 to 2016-12-31 23:55:01
+Unique dates: 118
+Invalid timestamps removed: 0
+Exact duplicate rows in original data: 0
+Repeated timestamps: 0
+Negative radiation readings: 0
+Zero radiation readings: 0
+IQR-flagged radiation outliers (not removed): 1965
+
+Cleaning decisions:
+- Rows with invalid timestamps were removed because time-based analysis requires valid timestamps.
+- Measurement columns were converted to numeric; unparseable values become missing values.
+- Duplicate rows, repeated timestamps, negative radiation, zero radiation and IQR outliers were reported, not automatically removed.
+- Zero radiation can represent night and was retained.
+- The input CSV was not modified.
+
+Graphs: /Users/aashi/SolarSense/solar_analysis_output/graphs
+Tables and cleaned data: /Users/aashi/SolarSense/solar_analysis_output/data
+Reports and scores: /Users/aashi/SolarSense/solar_analysis_output/reports

@@ -1,0 +1,8 @@
+PART B — DRAWING INFERENCES
+Evidence values are calculated from the supplied CSV. Correlation is not causation.
+1. Highest mean radiation hour: 12:00, hourly mean 727.474. See graphs/A2_mean_radiation_by_hour.png.
+2. Strongest absolute Pearson relationship (all_records): Temperature, r=0.735, Spearman rho=0.718, n=32686. Full ranking: data/radiation_parameter_correlations.csv.
+2. Strongest absolute Pearson relationship (positive_radiation): Temperature, r=0.735, Spearman rho=0.718, n=32686. Full ranking: data/radiation_parameter_correlations.csv.
+3. Radiation-temperature r=0.735; radiation-humidity r=-0.226; temperature-humidity r=-0.285. See the relevant scatterplots. Temperature may partly be a response to solar heating.
+4. IQR outlier rule flags 1965 of 32686 non-missing radiation readings; fences=-528.277 to 883.742. Review data/radiation_iqr_outliers.csv for timestamps and context. Flags do not prove sensor failure.
+Bonus thermal-lag check: hourly mean radiation peaks at 12:00 and temperature at 12:00; difference +0 hours. Verify against plots; aggregation and season coverage matter.

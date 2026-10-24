@@ -1,0 +1,6 @@
+ADDITIONAL PART B EVIDENCE
+Hourly radiation peak is 12:00; mean offset from solar noon among readings in that hour is +15.1 minutes.
+Hourly cross-correlation is highest at lag +1 hour(s) (correlation=0.939); this is an exploratory diurnal pattern, not proof of causal delay.
+Humidity–clearness-index Pearson r=-0.470 (n=15239); clearness index is only a proxy because the clear-sky envelope is idealised.
+Top mutual-information feature for all_records: ClearnessIdx, MI=1.215.
+Top mutual-information feature for daytime_only: ClearnessIdx, MI=1.215.

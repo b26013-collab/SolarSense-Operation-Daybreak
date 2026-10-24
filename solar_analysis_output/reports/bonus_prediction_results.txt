@@ -1,0 +1,68 @@
+BONUS — LEAK-AWARE SOLAR RADIATION PREDICTION
+Random 80/20 split is the assignment baseline. Chronological 80/20 and GroupKFold by date reduce neighbouring-row/date leakage.
+Temperature is partly caused by radiation and is suitable for nowcasting, not a clean forecast feature. Time-only is the forecast-style ablation.
+Model ladder: idealised ClearSky baseline, Linear Regression, Random Forest, Gradient Boosting.
+Partial dependence plot unavailable: Expected ax to have 3 axes, got 1
+Quantile interval sample day: 2016-12-31; interval coverage on that sample day is computed in the CSV only after comparing actual readings with q10/q90; this interval is not guaranteed calibrated.
+Results summary table (model × features × split × RMSE × R²):
+                                      model         features                    split  test_RMSE   test_R2
+                         Idealised ClearSky ClearSky (proxy)       clear_sky_baseline 354.263728 -0.257542
+                           LinearRegression        Time-only             random_80_20 201.591921  0.592031
+                               RandomForest        Time-only             random_80_20  77.338757  0.939955
+                           GradientBoosting        Time-only             random_80_20 141.823115  0.798082
+                           LinearRegression        Time-only      chronological_80_20 320.267997 -0.455301
+                               RandomForest        Time-only      chronological_80_20 176.707123  0.556969
+                           GradientBoosting        Time-only      chronological_80_20 215.975373  0.338189
+                           LinearRegression     Weather-only             random_80_20 211.731284  0.549960
+                               RandomForest     Weather-only             random_80_20 160.498838  0.741402
+                           GradientBoosting     Weather-only             random_80_20 186.660707  0.650226
+                           LinearRegression     Weather-only      chronological_80_20 203.280048  0.413706
+                               RandomForest     Weather-only      chronological_80_20 179.416849  0.543278
+                           GradientBoosting     Weather-only      chronological_80_20 186.076640  0.508742
+                           LinearRegression         Combined             random_80_20 170.637634  0.707699
+                               RandomForest         Combined             random_80_20  78.350355  0.938374
+                           GradientBoosting         Combined             random_80_20 119.269009  0.857197
+                           LinearRegression         Combined      chronological_80_20 170.172440  0.589130
+                               RandomForest         Combined      chronological_80_20 125.663829  0.775949
+                           GradientBoosting         Combined      chronological_80_20 130.835347  0.757129
+                           LinearRegression         Combined GroupKFold_by_date_5fold 169.202131  0.713133
+                               RandomForest         Combined GroupKFold_by_date_5fold 112.916481  0.872243
+                           GradientBoosting         Combined GroupKFold_by_date_5fold 121.368403  0.852402
+Physics-informed RF (ClearnessIdx×ClearSky)         Combined             random_80_20 114.466642  0.880564
+Physics-informed RF (ClearnessIdx×ClearSky)         Combined      chronological_80_20 181.284107  0.609169
+Validation gap:
+LinearRegression / Time-only: chronological RMSE minus random RMSE = +118.676; random RMSE=201.592, chronological RMSE=320.268.
+LinearRegression / Weather-only: chronological RMSE minus random RMSE = -8.451; random RMSE=211.731, chronological RMSE=203.280.
+LinearRegression / Combined: chronological RMSE minus random RMSE = -0.465; random RMSE=170.638, chronological RMSE=170.172.
+RandomForest / Time-only: chronological RMSE minus random RMSE = +99.368; random RMSE=77.339, chronological RMSE=176.707.
+RandomForest / Weather-only: chronological RMSE minus random RMSE = +18.918; random RMSE=160.499, chronological RMSE=179.417.
+RandomForest / Combined: chronological RMSE minus random RMSE = +47.313; random RMSE=78.350, chronological RMSE=125.664.
+GradientBoosting / Time-only: chronological RMSE minus random RMSE = +74.152; random RMSE=141.823, chronological RMSE=215.975.
+GradientBoosting / Weather-only: chronological RMSE minus random RMSE = -0.584; random RMSE=186.661, chronological RMSE=186.077.
+GradientBoosting / Combined: chronological RMSE minus random RMSE = +11.566; random RMSE=119.269, chronological RMSE=130.835.
+Physics-informed RF (ClearnessIdx×ClearSky) / Combined: chronological RMSE minus random RMSE = +66.817; random RMSE=114.467, chronological RMSE=181.284.
+Random Forest impurity importance (predictive association, not causation):
+HourCos: 0.7204
+Humidity: 0.1122
+SolarFrac: 0.0400
+MinutesSinceSunrise: 0.0387
+Temperature: 0.0188
+DayOfYearSin: 0.0125
+WindDirection(Degrees): 0.0116
+Pressure: 0.0100
+DayLength_h: 0.0076
+DayLengthMinutes: 0.0073
+Permutation importance on chronological test rows (RMSE scoring; larger positive value indicates greater predictive contribution):
+HourCos: 167.8801 ± 1.3984
+Humidity: 37.5597 ± 0.7791
+SolarFrac: 17.2904 ± 0.4491
+Temperature: 9.0722 ± 0.6808
+MinutesSinceSunrise: 8.6499 ± 0.6462
+Pressure: 1.3443 ± 0.2649
+WindDirection(Degrees): 0.6656 ± 0.0967
+HourSin: 0.3595 ± 0.0456
+DayLength_h: 0.0000 ± 0.0000
+DayOfYearSin: 0.0000 ± 0.0000
+Interpretation: time-only is the forecast-style model; weather-only shows weather information alone; combined estimates the benefit of both. Temperature is partly downstream of radiation and makes the combined model a nowcast if temperature is not known at forecast time.
+ClearSky is an idealised half-sine envelope based on a dataset percentile, not a validated atmospheric clear-sky model. ClearnessIdx and physics-informed predictions inherit that limitation.
+Error may be higher around sunrise/sunset and on cloud-variable days; inspect ml_error_by_hour.csv and ml_error_by_day_type.csv rather than assuming this pattern.

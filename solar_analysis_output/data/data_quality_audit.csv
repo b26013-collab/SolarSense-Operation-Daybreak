@@ -1,0 +1,6 @@
+issue,count,handling
+Missing values,17447,Numeric gaps retained for audit; model pipelines impute features; target-missing rows excluded from modelling.
+Negative radiation readings,0,Flagged for review; retained rather than silently clipping because they may be sensor/quality artefacts.
+Duplicate timestamps,0,Reported; duplicate records retained in raw analysis. Consider aggregation if duplicates are confirmed accidental.
+Large sampling gaps (>1.5× median interval),308,Reported as gaps; no synthetic readings inserted.
+Invalid timestamps removed,0,Rows without a parseable Datetime were removed before time-series analysis.

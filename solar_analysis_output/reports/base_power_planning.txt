@@ -1,0 +1,8 @@
+BASE POWER PLANNING — OPERATIONAL INDICATORS
+Low-energy threshold is the 20th percentile of observed daily integrated radiation energy: 3.4741 kWh/m² (assuming radiation is W/m² and timestamps are representative).
+Low-energy days: 24 of 118 days. This is a relative risk flag, not blackout probability.
+Longest consecutive low-energy cluster: {'start': '2016-12-01', 'end': '2016-12-05', 'consecutive_days': 5}
+Day-type proportions: DayType  PercentOfDays
+Unknown          100.0
+Hours most often at/above 80% of each day peak: 12:00 (57.2%), 11:00 (52.5%), 13:00 (50.1%)
+ReadinessScore is min-max-normalized daily energy; it ranks days within this dataset and is not engineering-grade system sizing.

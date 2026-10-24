@@ -1,0 +1,7 @@
+OPERATION DAYBREAK NOVELTY
+Solar Reliability Score is a relative ranking, not actual energy yield or blackout probability.
+Low-radiation threshold: 1.200 (10th percentile of positive radiation).
+Daylight is defined by sunrise/sunset when available; otherwise positive readings are used. Episodes split at gaps greater than 1.5 times median sampling interval.
+Top reliability day: 2016-09-19, score 99.72/100, mean daylight radiation 643.966.
+Longest low-radiation episode: 2016-12-01 06:50:03 to 2016-12-01 07:00:02, estimated 15.0 minutes.
+Actual blackout risk requires panel capacity, battery state of charge, and load data.

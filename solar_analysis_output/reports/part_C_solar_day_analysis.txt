@@ -1,0 +1,13 @@
+PART C — SOLAR DAY ANALYSIS
+Datetime dtype: datetime64[us]
+Daily max/mean and peak times: data/daily_report.csv
+Top five days by average radiation:
+1. 2016-09-19: mean=335.504, max=1085.750, n=275
+2. 2016-09-02: mean=333.471, max=1062.010, n=279
+3. 2016-09-22: mean=325.516, max=1053.170, n=284
+4. 2016-09-25: mean=319.922, max=1075.290, n=284
+5. 2016-09-28: mean=312.400, max=1029.300, n=282
+Highest single reading: date=2016-09-04, time=12:15:04, radiation=1601.260.
+Temperature=61.000; humidity=93.000; wind speed=9.000.
+Sunrise=06:08:00, sunset=18:35:00, day length=12.45 hours.
+Peak after sunrise=6 hours 7 minutes (367.1 minutes); daylight fraction elapsed=0.491; offset from solar-noon midpoint=-6.4 minutes.
